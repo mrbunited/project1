@@ -1,0 +1,10 @@
+Protect this branch
+Disables force-pushes to this branch and prevents it from being deleted.
+ Require pull request reviews before merging
+When enabled, all commits must be made to a non-protected branch and submitted via a pull request with the required number of approving reviews and no changes requested before it can be merged into master.
+ Require status checks to pass before merging
+Choose which status checks must pass before branches can be merged into master. When enabled, commits must first be pushed to another branch, then merged or pushed directly to master after status checks have passed.
+ Require signed commits
+Commits pushed to this branch must have verified signatures.
+ Include administrators
+Enforce all configured restrictions for administrators.
