@@ -1,7 +1,8 @@
-var searchQ = $("#searchInput").val().trim();
+var searchQ = "";
 
 $(".btn").on("click", function(event) {
     event.preventDefault();
+    searchQ = $("#searchInput").val().trim();
     console.log("Searched: " + searchQ);
 })
 
