@@ -104,16 +104,16 @@ var infowindow;
   
 function initMap() {
   
-  // map options
+  //map options
   var options = {
     zoom:12,
     center:{lat:40.7128, lng:-74.0060}
   }
   infoWindow = new google.maps.InfoWindow;
-  //map
+  //gmap
   var map = new google.maps.Map(document.getElementById("map"), options);
 
-  // Try HTML5 geolocation.
+  //geolocation
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -161,7 +161,7 @@ function initMap() {
     });
     markers = [];
 
-    // For each place, get the icon, name and location.
+    // Get icon, name, location
     var bounds = new google.maps.LatLngBounds();
     places.forEach(function(place) {
       if (!place.geometry) {
@@ -176,7 +176,7 @@ function initMap() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      // Create a marker for each place.
+      // Create a marker for each search
       markers.push(new google.maps.Marker({
         map: map,
         icon: icon,
@@ -195,6 +195,8 @@ function initMap() {
   });
 }
 
+
+//error messages for user
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
