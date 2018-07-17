@@ -35,19 +35,23 @@
             <div class="col-xs-2 col-s-2 col-m-2 col-lg-2">
                 <form class="form-inline">
                     <label class="sr-only" for="inlineFormInputName2">City</label>
-                    <input type="text" class="form-control mb-2 mr-sm-2" id="searchInput" placeholder="Choose a City">
+                    <input type="text" class="form-control mb-2 mr-sm-2 controls" id="pac-input" placeholder="Choose a City">
                     <button type="submit" class="btn btn-primary mb-2">Submit</button>
                   </form>
             </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-xs-12 col-s-12 col-m-12 col-lg-12">
+                <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+                <div id= "map"></div>
+            </div>
+        </div>
     </container>
 
-
-
-
-
-
-
     <script src="assets/js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2dCNZGxleJP84HQdavpGYF-S0YNyz4Xg&libraries=places&callback=initMap"></script>
+   
 </body>
 
 </html>
