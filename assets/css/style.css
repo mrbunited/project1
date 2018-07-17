@@ -37,10 +37,10 @@ body {
 
 
 
-
+/* Styling for map, must have these to display on document */
 #map {
-    height: 600px;  /* The height is 400 pixels */
-    width: 50%;  /* The width is the width of the web page */
+    height: 600px;
+    width: 50%;  
     margin: auto;
    }
 
