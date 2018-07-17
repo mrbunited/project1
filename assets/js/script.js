@@ -97,8 +97,29 @@ $(".btn").on("click", function (event) {
 
 
 
+});
 
+var map;
+var service;
+var infowindow;
+  
+function initMap() {
+  
+  // map options
+  var options = {
+    zoom:12,
+    center:{lat:41.8781, lng:-87.6298}
+  }
+  infoWindow = new google.maps.InfoWindow;
+  //map
+  var map = new google.maps.Map(document.getElementById("map"), options);
 
+  //add marker
+  var marker = new google.maps.Marker({
+    position:{lat:21.8789, lng:-87.6359},
+    map:map
+  });
+}
 
 
 
@@ -247,6 +268,13 @@ $(".btn").on("click", function (event) {
 
 
 
-})
+
+
+
+
+
+
+
+
 
 
