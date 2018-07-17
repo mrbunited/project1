@@ -1,6 +1,6 @@
 $(".btn").on("click", function (event) {
   event.preventDefault();
-  var searchQ = $("#searchInput").val().trim();
+  var searchQ = $("#pac-input").val().trim();
   console.log("Searched: " + searchQ);
 
 
@@ -36,7 +36,7 @@ $(".btn").on("click", function (event) {
 
 
 
-
+// I HAD TO CHANGE searchQ id to #pac-input to make it work with map
 
 
 
@@ -128,13 +128,17 @@ function initMap() {
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
+  } 
+  
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+
+  $(".btn").on("click", function (event) {
+    event.preventDefault();
+    input = $("#pac-input").val().trim();
+  });
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
