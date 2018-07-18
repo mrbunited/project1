@@ -1,7 +1,7 @@
 $(".btn").on("click", function (event) {
   event.preventDefault();
   var searchQ = $("#pac-input").val().trim();
-  console.log("Searched: " + searchQ);
+  // console.log("Searched: " + searchQ);
 
 
 // Weather API
@@ -236,63 +236,66 @@ function initMap() {
 
   $(".btn").on("click", function (event) {
     event.preventDefault();
-    input = $("#pac-input").val().trim();
-  });
+    input = $(input).val().trim();
+    console.log("Searched " + input);
+    
+  
 
-  // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
 
-  var markers = [];
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
-  searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
 
-    if (places.length == 0) {
-      return;
-    }
+          if (places.length == 0) {
+            return;
+          }
 
-    // Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
 
-    // Get icon, name, location
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      if (!place.geometry) {
-        console.log("Returned place contains no geometry");
-        return;
+          // Get icon, name, location
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each search
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
       }
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
-
-      // Create a marker for each search
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location
-      }));
-
-      if (place.geometry.viewport) {
-        // Only geocodes have viewport.
-        bounds.union(place.geometry.viewport);
-      } else {
-        bounds.extend(place.geometry.location);
-      }
-    });
-    map.fitBounds(bounds);
-  });
-}
+)};
 
 
 //error messages for user
@@ -305,15 +308,25 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 
-      
+$(".btn").on("click", function(event) {
+  // This line prevents the page from refreshing when a user hits "enter".
+  event.preventDefault();
 
+  // Grab the user input
+  var userSearch = $("#pac-input").val().trim();
 
+  var valid = (userSearch.search(/^[A-Za-z]+$/) != -1)
+       
+   console.log(valid);
+   if (valid == false) {
+    //  document.getElementById("val-msg").style.display=""
+     console.log("Not Valid");
+   }
+   else {
+         // Store the username into localStorage using "localStorage.setItem"
+          localStorage.setItem("Location", userSearch);
 
-
-
-
-
-
-
-
-
+          // And display that name for the user using "localStorage.getItem"
+          $("#recentSearches").append("<tr><td>" + userSearch + "</td></tr>");
+       }
+});
