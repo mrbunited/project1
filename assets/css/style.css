@@ -1,6 +1,13 @@
 body {
+    max-width:1000px;
     margin: auto;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-image: url("../img/image-bkg.jpg");
 }
+
 
 
 
@@ -85,3 +92,4 @@ body {
 #pac-input:focus {
     border-color: #4d90fe;
   }
+

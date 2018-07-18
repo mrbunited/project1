@@ -35,167 +35,26 @@ $(".btn").on("click", function (event) {
     });
 
 
-
-// I HAD TO CHANGE searchQ id to #pac-input to make it work with map
-
-
+//  Pixabay api for background image
+//     var imageURL = "https://pixabay.com/api/?key=9553787-ed488c9c5fa27a900f35fb4af&q=city+"+ searchQ +"&image_type=photo&safesearch=true&min_width=2000&min_height=1335";
 
 
+//     $.ajax({
+//       url: imageURL,
+//       method: "GET"
+//     })
 
 
+//       .then(function (responseImage) {
+//         console.log(imageURL);
+//         console.log(responseImage.hits[0].largeImageURL);
+// //         var oDiv = document.getElementById("#main");
+// // oDiv.style.removeProperty("background-image");
+//         // $('body').css('background-image', none);
+//         $("body").css("background-image","url(" + responseImage.hits[0].largeImageURL + ")");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//       });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var map;
 var service;
@@ -303,17 +162,46 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
+})
 
 
-      
+$("#fave-btn").on("click", function (event) {
+  event.preventDefault();
+    // databse strats here
+      var config = {
+        apiKey: "AIzaSyCZzfdRrhwJAeF05SkN8G2kjiFLvE8HIHk",
+        authDomain: "project-1-travel.firebaseapp.com",
+        databaseURL: "https://project-1-travel.firebaseio.com",
+        projectId: "project-1-travel",
+        storageBucket: "project-1-travel.appspot.com",
+        messagingSenderId: "798853647697"
+      };
+
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+    console.log(database);
+
+    var faveCity = "";
 
 
+    faveCity = $("#searchInput").val().trim();
 
-
-
-
-
-
-
-
+        // Change what is saved in firebase, only save if the input is correct
+        database.ref().push({
+            faveCity: faveCity,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+  
+     database.ref().on("child_added", function (snapshot) {
+      // var faveDisplay = (snapshot.val().faveCity);
+      // console.log(faveDisplay);
+      var newDiv = $("<div>").addClass('recent-view').text(snapshot.val().faveCity);
+      // $("recent-div").text("Recently Searched Cities : " + recentCity);
+      $("#recent-div").append(newDiv);
+ }) 
+ firebase.app().delete().then(function() {
+  console.log("[DEFAULT] App is Gone Now");
+});
+  })
 
