@@ -237,9 +237,7 @@ function initMap() {
   $(".btn").on("click", function (event) {
     event.preventDefault();
     input = $(input).val().trim();
-    console.log("Searched " + input);
-    
-  
+    console.log("Searched " + input);  
 
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function() {
@@ -307,6 +305,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+//local storage on search click
 
 $(".btn").on("click", function(event) {
   // This line prevents the page from refreshing when a user hits "enter".
@@ -324,7 +323,7 @@ $(".btn").on("click", function(event) {
    }
    else {
          // Store the username into localStorage using "localStorage.setItem"
-          localStorage.setItem("Location", userSearch);
+          sessionStorage.setItem("Location", userSearch);
 
           // And display that name for the user using "localStorage.getItem"
           $("#recentSearches").append("<tr><td>" + userSearch + "</td></tr>");
