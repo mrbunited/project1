@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
 </head>
 
 <body>
+    <div id="main">
     <container>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
@@ -29,20 +31,67 @@
             </div>
     </container> -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     <container>
         <div class="row">
             <!-- Search Box -->
-            <div class="col-xs-2 col-s-2 col-m-2 col-lg-2">
+            <div>
                 <form class="form-inline">
                     <label class="sr-only" for="inlineFormInputName2">City</label>
-                    <input type="text" class="form-control mb-2 mr-sm-2" id="searchInput" placeholder="Choose a City">
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="searchInput" placeholder="Choose a City"><div id="val-msg" style="color:Red; display:none">wrong input</div>
+                    
                   </form>
+                  <p><small>Type your city</small></p>
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    
+                    <button type="button" class="btn btn-danger mb-2" id="fave-btn">Add to favorites</button>
             </div>
     </container>
 
-
-
+</div>
+<div id="recent-div">Your favorites: </div>
 
 
 
