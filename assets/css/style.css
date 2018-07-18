@@ -1,3 +1,15 @@
+#tableName {
+  text-align: center;
+}
+
+
+
+/* Styling for map, must have these to display on document */
+#map {
+    height: 600px;
+    width: 50%;  
+    margin: auto;
+
 body {
     max-width:1000px;
     margin: auto;
@@ -8,48 +20,12 @@ body {
     background-image: url("../img/image-bkg.jpg");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Styling for map, must have these to display on document */
 #map {
     height: 600px;
     width: 50%;  
     margin: auto;
-   }
+}
 
 .pac-card {
     margin: 10px 10px 0 0;
@@ -83,13 +59,15 @@ body {
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
+    margin-left: 75px;
     margin-left: 12px;
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     width: 400px;
-  }
+}
 
 #pac-input:focus {
     border-color: #4d90fe;
   }
+
 
